@@ -1,6 +1,4 @@
-import {
-    StyleSheet
-} from "react-native";
+import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
     itemListContainer: {
@@ -16,19 +14,19 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 10,
         paddingVertical: 15,
         marginVertical: 10,
-
-    },
+        
+        },
     item: {
         fontSize: 16,
-    },
+        },
     buttonX: {
         backgroundColor: 'black',
-        padding: 10,
+        padding:10,
         borderRadius: 5,
-    },
+        },
     delete: {
         fontSize: 18,
         fontWeight: 'bold',
         color: '#CE84AD'
-    },
+        },
 })

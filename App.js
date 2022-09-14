@@ -1,14 +1,12 @@
-import {AddTasks, CustomModal} from './components/index';
-import { Button, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {AddTasks, CustomFlatList, CustomModal, RenderItem} from './components/index';
+import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import RenderItem from './components/Item';
 import { useState } from 'react';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    // justifyContent: 'center',
     alignItems: 'center',
 
   },
@@ -16,39 +14,34 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   
-  itemListContainer: {
-    backgroundColor: '#D4CBB3',
-    borderRadius: 5,
-    flex: 1,
-    width: '70%',
-    marginVertical: 5,
-    marginLeft: 30,
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 10,
-    paddingVertical: 15,
-    marginVertical: 10,
+  // itemListContainer: {
+  //   backgroundColor: '#D4CBB3',
+  //   borderRadius: 5,
+  //   flex: 1,
+  //   width: '70%',
+  //   marginVertical: 5,
+  //   marginLeft: 30,
+  //   justifyContent: 'space-between',
+  //   flexDirection: 'row',
+  //   alignItems: 'center',
+  //   paddingHorizontal: 10,
+  //   paddingVertical: 15,
+  //   marginVertical: 10,
    
-  },
-  itemList: {
-    flex: 1,
-    marginVertical: 20,
-    marginHorizontal: 20,
-  },
-  item: {
-    fontSize: 16,
-  },
-  buttonX: {
-    backgroundColor: 'black',
-    padding:10,
-    borderRadius: 5,
-  },
-  delete: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#CE84AD'
-  },
+  // },
+  // item: {
+  //   fontSize: 16,
+  // },
+  // buttonX: {
+  //   backgroundColor: 'black',
+  //   padding:10,
+  //   borderRadius: 5,
+  // },
+  // delete: {
+  //   fontSize: 18,
+  //   fontWeight: 'bold',
+  //   color: '#CE84AD'
+  // },
   modalContainer: {
     marginTop: 30,
     justifyContent: 'center',
@@ -104,13 +97,13 @@ export default function App() {
   }
 
   const renderItem = ({item}) => (
-    <View style= {styles.itemListContainer}>
-      <Text style={styles.item}>{item.value}</Text>
-      <TouchableOpacity style={styles.buttonX} onPress={ () => onHandleModal(item.id)}>
-        <Text style={styles.delete}>X</Text>
-      </TouchableOpacity>
-    </View>
-    
+    // <View style= {styles.itemListContainer}>
+    //   <Text style={styles.item}>{item.value}</Text>
+    //   <TouchableOpacity style={styles.buttonX} onPress={ () => onHandleModal(item.id)}>
+    //     <Text style={styles.delete}>X</Text>
+    //   </TouchableOpacity>
+    // </View>
+    <RenderItem item={item} onPress={ () => onHandleModal(item.id)} key={item.id}/>
   )
 
 
@@ -130,11 +123,9 @@ export default function App() {
         color='black'
         textButton='ADD'
       />
-      <FlatList
-        style={styles.itemList}
+      <CustomFlatList
         data={tasks}
         renderItem= {renderItem}
-        keyExtractor= {(item) => item.id.toString()}
       />
       <CustomModal animationType='slide' visible={modalVisible}>
         <View style={styles.modalContainer}>
